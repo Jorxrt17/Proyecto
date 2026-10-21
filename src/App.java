@@ -1,8 +1,19 @@
+import java.util.Random;
+import java.util.Scanner;
 public class App {
+    private static Scanner sc = new Scanner(System.in);
+    private static Random r = new Random();
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        System.out.println("Soufian y soy muy guapo");
-        System.out.println("cambio 2");
-        System.out.println("Cambio 1");
+        
     }
+
+    public static void Pruebaletras (){
+    System.out.println();
+
+
+
+
+    }
+
+
 }
