@@ -12,32 +12,28 @@ public class App {
      System.out.println("La palabra mas larga ");
     
         System.out.println(GeneradorLetras());
-        boolean resultadopal1 = true ;
-        boolean resultadoresp2 = true ;
+        String respuesta;
         do {
             System.out.println("Turno del jugador  1 introduce la palabra con las letras mostradas  ");
-            String respuesta = sc.nextLine();
-            comprobacion(respuesta);
-            resultadopal1 = palabraJugador1.contains(GeneradorLetras());
-            System.out.println("Comprobando si contine las letras predefinidas");
-            if (resultadopal1=false ) {
-                System.out.println("La palabra no contiene las letras predefinidas  vuelva a intentarlo ");
+             respuesta = sc.nextLine();
+            if(comprobacion(respuesta)==true){
+                System.out.println("El programa a confirmado que si contiene las palabras predefinidas ");
             }else{
-        System.out.println("Enorabuena la palabra si existe ");
+                
+                System.out.println("El programa a confirmado que no contiene las palabras predefinidas ");
+                System.out.println("!Intentalo de nuevo¡");
 
             }
-            System.out.println("Jugador numero 2 La palabra del jugar 1 existe (si o no) ");
-            String resp2 = sc.nextLine();
-            resultadoresp2 = resp2.equalsIgnoreCase("si,no");
-        } while (!resultadopal1 );
+           
+        } while (comprobacion(respuesta)==false);
         System.out.println("Enorabuena la palabra si existe ");
 
     }
 
     public static  String GeneradorLetras (){
-     String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+     String alfabeto = "ABCDEFGHIJLMNOPQRSTUVWXY";
         String vocales = "AEIOU";
-        String consonantes = "BCDFGHJKLMNPQRSTVWXYZ";
+        String consonantes = "BCDFGHJLMNPQRSTV";
      String  letrasgeneradas = " " ;
         for (int i = 0; i < 4; i++) {
             int posicion2 = r.nextInt(vocales.length());
@@ -58,15 +54,15 @@ public class App {
         return letrasgeneradas ;
     }
 
-    public static String comprobacion (String respuesta){
-      
-       boolean resultado = respuesta.contains(GeneradorLetras());
-
-        return resultado;
+    public static boolean comprobacion (String respuesta){
+        String posicion ;
+      for (int i = 0; i < respuesta.length(); i++) {
+       posicion = String.valueOf(respuesta.charAt(i));
+       
+      }
     }
 
-
-    
+   
 
 
 }
