@@ -12,6 +12,7 @@ public class App {
         System.out.println("3.Ajustes");
         System.out.println("Opcion 5 : Finalizar");
         opcion = sc.nextInt();
+        sc.nextLine();
     do{switch (opcion) {
         case 1:
             System.out.println("BIENVENIDO A MODO CONCURSO");
@@ -31,8 +32,14 @@ public class App {
             break;
     }
 
-    }while(opcion==5);
+    }while(opcion!=5);
     }
+
+    //Inicializar resultado con seleccion
+    //Bucle 5 veces
+    //     Seleccionar operacion
+    //     seleccionar numero 
+    //     acumular resultado
     public static void numerosale() {
         int numeros3cifras=0;
         int numeros0=0;
@@ -57,88 +64,35 @@ public class App {
         System.out.println(numeros4);
         System.out.println(numeros5);
         System.out.println("Selecciona 2 numeros para poder llegar al numero objetivo: " + numeros3cifras);     
-        int primerusado = sc.nextInt();
-        System.out.println("Ahora el segundo numero");
-        int segundousado = sc.nextInt();
-        System.out.println("Ahora selecciona que operacion deseas realizar: ");
-        System.out.println("1. Sumar");
-        System.out.println("2. Restar");
-        System.out.println("3. Multiplicar");
-        System.out.println("4. Dividir");
-        System.out.println("5. Salir..");
-        int operacion = sc.nextInt();
-        do {
-        System.out.println("Ahora selecciona que operacion deseas realizar: ");
-        System.out.println("1. Sumar");
-        System.out.println("2. Restar");
-        System.out.println("3. Multiplicar");
-        System.out.println("4. Dividir");
-        System.out.println("5. Salir..");
-        operacion = sc.nextInt();
-        switch (operacion) {
-            case 1:
-                int resultadomas=primerusado+segundousado;
-                System.out.println("Este es el resultado de tu suma : " + resultadomas);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            case 2:
-                int resultadomenos= primerusado-segundousado;
-                System.out.println("Este es el resultado de tu resta : " + resultadomenos);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            case 3:
-                int resultadopor= primerusado*segundousado;
-                System.out.println("Este es el resultado de tu multiplicacion : " + resultadopor);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            case 4:
-                int resultadodiv= primerusado/segundousado;
-                System.out.println("Este es el resultado de tu division : " + resultadodiv);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            default:
-                System.out.println("Opción no valida");
-                break;}
-        } while (operacion != 5); 
-        System.out.println("Dime tu primer resultado y con que numero deseas operar");
-        int primerresultado = sc.nextInt();
-         System.out.println("Ahora el numero deseado");
-        int deseado = sc.nextInt();
-        System.out.println("Dime la operación");
-        System.out.println("1. Sumar");
-        System.out.println("2. Restar");
-        System.out.println("3. Multiplicar");
-        System.out.println("4. Dividir");
-        int operacion2 = sc.nextInt();
-        switch (operacion2) {
-            case 1:
-                int resultadomas=primerresultado+deseado;
-                System.out.println("Este es el resultado de tu suma : " + resultadomas);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            case 2:
-                int resultadomenos= primerresultado-deseado;
-                System.out.println("Este es el resultado de tu resta : " + resultadomenos);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            case 3:
-                int resultadopor= primerresultado*deseado;
-                System.out.println("Este es el resultado de tu multiplicacion : " + resultadopor);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            case 4:
-                int resultadodiv= primerresultado/deseado;
-                System.out.println("Este es el resultado de tu division : " + resultadodiv);
-                System.out.println("Y este es el numero ha alcanzar: " + numeros3cifras);
-                break;
-            default:
-                System.out.println("Opción no valida");
-                break;
-     }
-        
+        int numerousado=seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
+       for ( int i = 0; i < 6; i++) {
+        System.out.println("Selecciona la operación");
+        System.out.println("1.Sumar");
+        System.out.println("2.Restar");
+        System.out.println("3.Multiplicar");
+        System.out.println("4.dividir");
+
+       }
     }
 
-    public static void resultado() {
-        
+    public static int seleccionar(int numeros0, int numeros1, int numeros2, int numeros3, int numeros4, int numeros5) {
+        int resultado=0;
+        do {
+            int opcion =sc.nextInt();
+            sc.nextLine();
+            resultado=switch (opcion) {
+                case 1 -> numeros0;
+                case 2 -> numeros1;
+                case 3 -> numeros2;
+                case 4 -> numeros3;
+                case 5 -> numeros4;
+                case 6 -> numeros5;
+                default -> -1;
+
+            };
+            if (resultado==-1)
+                System.out.println("Numero no valido por favor seleccione entre los generados");
+        } while (resultado<0);
+        return resultado;
     }
 }
