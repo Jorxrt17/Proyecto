@@ -44,7 +44,8 @@ public class App {
             }
            
         } while (comprobacion(respuesta,letras)==false && respuestaValidez.equalsIgnoreCase("no"));
-        System.out.println("Enorabuena la palabra si existe ");
+       
+        
 
         System.out.println("Turno del jugador 2");
         letras= GeneradorLetras();
@@ -74,7 +75,7 @@ public class App {
 
            
         } while (comprobacion(respuesta,letras)==false && respuestaValidez.equalsIgnoreCase("no"));
-        System.out.println("Enorabuena la palabra si existe ");
+   
         if (ganadorJugador1(respuesta, respuesta2)==true) {
             System.out.println("Felicidades jugador 1 tu palabra es mas larga has obtenido un punto ");
         }else{
