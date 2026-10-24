@@ -11,12 +11,30 @@ public class App {
     public static void Pruebaletras (){
      System.out.println("La palabra mas larga ");
     
-        System.out.println(GeneradorLetras());
+        String letras= GeneradorLetras();
+        System.out.println("Letras disponibles " + letras );
         String respuesta;
+        String respuesta2;
+        String respuestamayus;
+        String respuestaValidez;
+        
+     
+
         do {
             System.out.println("Turno del jugador  1 introduce la palabra con las letras mostradas  ");
              respuesta = sc.nextLine();
-            if(comprobacion(respuesta)==true){
+             respuestamayus =respuesta.toUpperCase();
+             System.out.println("Jugador 2 con la ayuda del diccionario ¿la palabra que ha escrito el jugador 1 existe ? (si / no)");
+             respuestaValidez = sc.nextLine();
+             
+             if (respuestaValidez.equalsIgnoreCase("si") ){
+                System.out.println("Perfecto si existe , el juego comprobara que se ha utilizado solo las letras permitidas ");
+
+             }else{
+                System.out.println("La palabra no es valida , de todas formas el juego comprobara si se han utilizado las letras adecuadas,tendras otra oportunidad jugador 1");
+             }
+
+            if(comprobacion(respuestamayus,letras)==true){
                 System.out.println("El programa a confirmado que si contiene las palabras predefinidas ");
             }else{
                 
@@ -25,15 +43,61 @@ public class App {
 
             }
            
-        } while (comprobacion(respuesta)==false);
+        } while (comprobacion(respuesta,letras)==false && respuestaValidez.equalsIgnoreCase("no"));
         System.out.println("Enorabuena la palabra si existe ");
+
+        System.out.println("Turno del jugador 2");
+        letras= GeneradorLetras();
+        System.out.println("Letras disponibles " + letras );
+        do {
+            System.out.println("Turno del jugador  2 introduce la palabra con las letras mostradas  ");
+             respuesta2 = sc.nextLine();
+             respuestamayus=respuesta2.toUpperCase();
+             System.out.println("Jugador 1 con la ayuda del diccionario ¿la palabra que ha escrito el jugador 2 existe ? (si / no)");
+             respuestaValidez = sc.nextLine();
+             
+             if (respuestaValidez.equalsIgnoreCase("si") ){
+                System.out.println("Perfecto si existe , el juego comprobara que se ha utilizado solo las letras permitidas ");
+
+             }else{
+                System.out.println("La palabra no es valida , de todas formas el juego comprobara si se han utilizado las letras adecuadas,tendras otra oportunidad jugador 2");
+             }
+
+            if(comprobacion(respuestamayus,letras)==true){
+                System.out.println("El programa a confirmado que si contiene las palabras predefinidas ");
+            }else{
+                
+                System.out.println("El programa a confirmado que no contiene las palabras predefinidas ");
+                System.out.println("!Intentalo de nuevo¡");
+
+            }
+
+           
+        } while (comprobacion(respuesta,letras)==false && respuestaValidez.equalsIgnoreCase("no"));
+        System.out.println("Enorabuena la palabra si existe ");
+        if (ganadorJugador1(respuesta, respuesta2)==true) {
+            System.out.println("Felicidades jugador 1 tu palabra es mas larga has obtenido un punto ");
+        }else{
+            System.out.println("Felicidades jugador 2 tu palabra es mas larga has obtenido un punto ");
+        }
+        if (empate(respuesta, respuesta2)==true) {
+            System.out.println("!Empate¡  Ninguno ha obtenido un punto ");
+        }
+
+
+
+      
+
+
+
+
 
     }
 
     public static  String GeneradorLetras (){
      String alfabeto = "ABCDEFGHIJLMNOPQRSTUVWXY";
         String vocales = "AEIOU";
-        String consonantes = "BCDFGHJLMNPQRSTV";
+        String consonantes = "BCDFGHJLMNPRSTV";
      String  letrasgeneradas = " " ;
         for (int i = 0; i < 4; i++) {
             int posicion2 = r.nextInt(vocales.length());
@@ -54,12 +118,36 @@ public class App {
         return letrasgeneradas ;
     }
 
-    public static boolean comprobacion (String respuesta){
+    public static boolean comprobacion (String respuestamayus  , String letras ){
         String posicion ;
-      for (int i = 0; i < respuesta.length(); i++) {
-       posicion = String.valueOf(respuesta.charAt(i));
-       
+      for (int i = 0; i < respuestamayus.length(); i++) {
+       posicion = String.valueOf(respuestamayus.charAt(i));
+        if(letras.contains(posicion)){
+            letras=letras.replaceFirst(posicion,"");
+
+        }else{
+            return false;
+        }
       }
+      return true;
+    }
+    public static boolean ganadorJugador1 (String respuesta,String respuesta2){
+
+        if(respuesta.length()>respuesta2.length()){
+            return  true ;
+            
+
+        }
+        return false;
+    }
+    public static boolean empate (String respuesta,String respuesta2){
+
+        if(respuesta.length()==respuesta2.length()){
+            return  true ;
+            
+
+        }
+        return false;
     }
 
    
