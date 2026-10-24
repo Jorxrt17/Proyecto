@@ -8,6 +8,10 @@ public class App {
         
     }
 
+    /*Empezamos con el juego de letras ,se le da un serie de letras y los jugadores tienen que escribir 
+    una plabara con esas letras lo mas grande posible el jugador que escriba la palabra mas grande posible 
+    con las letras generadas gana 1 punto en el marcador global .
+    */ 
     public static void Pruebaletras (){
      System.out.println("La palabra mas larga ");
     
@@ -18,7 +22,7 @@ public class App {
         String respuestamayus;
         String respuestaValidez;
         
-     
+     /*Hacemos q do while que contienen (pedir los datos y devolver si comprobacion  y si existe es true se guarda la respuesta si es falso se repite )para cada jugador  */
 
         do {
             System.out.println("Turno del jugador  1 introduce la palabra con las letras mostradas  ");
@@ -75,7 +79,8 @@ public class App {
 
            
         } while (comprobacion(respuesta,letras)==false && respuestaValidez.equalsIgnoreCase("no"));
-   
+
+        // comprobamos que jugador ha conseguido la palabra mas largo o si es un empate 
         if (ganadorJugador1(respuesta, respuesta2)==true) {
             System.out.println("Felicidades jugador 1 tu palabra es mas larga has obtenido un punto ");
         }else{
@@ -118,7 +123,10 @@ public class App {
 
         return letrasgeneradas ;
     }
-
+    /* funcion que le entra los datos con la variable letras que guarda las letras generadas 
+    respuestamayus que guarda la respuesta en mayuscula y comprobamos si contiene esas letras 
+    en la palabra que ha escrito el usuario 
+    */ 
     public static boolean comprobacion (String respuestamayus  , String letras ){
         String posicion ;
       for (int i = 0; i < respuestamayus.length(); i++) {
@@ -132,6 +140,7 @@ public class App {
       }
       return true;
     }
+    // Hacemos una funcion para comprobar que palabra es mas larga 
     public static boolean ganadorJugador1 (String respuesta,String respuesta2){
 
         if(respuesta.length()>respuesta2.length()){
@@ -150,8 +159,34 @@ public class App {
         }
         return false;
     }
+    public static void calculadoraHumana(){
 
-   
+
+    }
+    public static int numeroinicialRandom(){
+        int numeroinicial = r.nextInt(0, 101);
+        return numeroinicial;
+    }
+    public static int operacionRandom(int valorsumaresta,int valordivmulti,int numeroinicial){
+        int opcion = r.nextInt(1,4);
+        switch (opcion) {
+            case 1:
+                return numeroinicial-valorsumaresta;
+                break;
+            
+            default:
+                break;
+        }
+        return numeroinicial;
+    }
+    public static int valorsumarestaRandom(){
+        int valorsumaresta = r.nextInt(10, 100);
+        return valorsumaresta;
+    }
+    public static int valordivmultiRandom(){
+        int valordivmulti = r.nextInt(1, 10);
+        return valordivmulti;
+    }
 
 
 }
