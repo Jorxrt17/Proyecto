@@ -1,10 +1,12 @@
+
 import java.util.Random;
 import java.util.Scanner;
 public class App {
     private static Scanner sc = new Scanner(System.in);
     private static Random r = new Random();
     public static void main(String[] args) throws Exception {
-        Pruebaletras();
+       // Pruebaletras();
+        calculadoraHumana();
         
     }
 
@@ -80,16 +82,17 @@ public class App {
            
         } while (comprobacion(respuesta,letras)==false && respuestaValidez.equalsIgnoreCase("no"));
 
-        // comprobamos que jugador ha conseguido la palabra mas largo o si es un empate 
-        if (ganadorJugador1(respuesta, respuesta2)==true) {
-            System.out.println("Felicidades jugador 1 tu palabra es mas larga has obtenido un punto ");
-        }else{
-            System.out.println("Felicidades jugador 2 tu palabra es mas larga has obtenido un punto ");
-        }
-        if (empate(respuesta, respuesta2)==true) {
+        // comprobamos que jugador ha conseguido la palabra mas larga o si es un empate 
+       if (empate(respuesta, respuesta2)==true) {
             System.out.println("!Empate¡  Ninguno ha obtenido un punto ");
         }
-
+        if (ganadorJugador1(respuesta, respuesta2)==true) {
+            System.out.println("Felicidades jugador 1 tu palabra es mas larga has obtenido un punto ");
+        }
+        if (ganadorJugador2(respuesta,respuesta2)==true) {
+            System.out.println("Felicidades jugador 2 tu palabra es mas larga has obtenido un punto ");
+        }
+    
 
 
       
@@ -123,7 +126,7 @@ public class App {
 
         return letrasgeneradas ;
     }
-    /* funcion que le entra los datos con la variable letras que guarda las letras generadas 
+    /* Funcion que le entra los datos con la variable letras que guarda las letras generadas 
     respuestamayus que guarda la respuesta en mayuscula y comprobamos si contiene esas letras 
     en la palabra que ha escrito el usuario 
     */ 
@@ -148,8 +151,22 @@ public class App {
             
 
         }
-        return false;
+        return  false;
+        
+        
     }
+     public static boolean ganadorJugador2 (String respuesta,String respuesta2){
+
+        if(respuesta.length()<respuesta2.length()){
+            return  true ;
+            
+
+        }
+        return  false;
+        
+        
+    }
+
     public static boolean empate (String respuesta,String respuesta2){
 
         if(respuesta.length()==respuesta2.length()){
@@ -159,25 +176,96 @@ public class App {
         }
         return false;
     }
-    public static void calculadoraHumana(){
+    public static void calculadoraHumana() throws InterruptedException {
+        int suma = valorsumarestaRandom();
+        int resta= valorsumarestaRandom();
+        int div= valordivmultiRandom();
+        int multi= valordivmultiRandom();
+        int inicial= numeroinicialRandom();
+        int opcion = opcion();
+        int contador=0; 
+        int numoperaciones = 4;
+        int resultado =0;
+        long inicio =0 ;
+        long fin=0;
 
-
+         inicio = System.currentTimeMillis();
+        while (contador!=numoperaciones) {
+             suma = valorsumarestaRandom();
+             resta= valorsumarestaRandom();
+             div= valordivmultiRandom();
+             multi= valordivmultiRandom();
+             opcion = opcion();
+            switch (opcion) {
+                
+                case 1:
+                       
+                
+                        System.out.println("La opercion es la siguiente");
+                        System.out.println(inicial+" + "+suma);
+                        resultado = sc.nextInt();
+            
+                    break;
+                case 2:
+        
+                        System.out.println("La opercion es la siguiente");
+                        System.out.println(inicial+" - "+resta);
+                        resultado = sc.nextInt();
+                    break;  
+                    
+                case 3:
+                    
+            
+                        System.out.println("La opercion es la siguiente");
+                        System.out.println(inicial+" * "+multi);
+                        resultado = sc.nextInt();       
+                   
+                    break;
+            
+                case 4:
+                    
+                        System.out.println("La opercion es la siguiente");
+                        System.out.println(inicial+" / "+div);
+                        resultado = sc.nextInt();
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+            
+            inicial=resultado;
+            
+            contador++;
+            
+            
+        }
+        fin = System.currentTimeMillis();
+        int segundosTotales = (int) ((fin - inicio) / 1000);
+       System.out.println("Esto es lo que has tardado "+ segundosTotales);
     }
     public static int numeroinicialRandom(){
         int numeroinicial = r.nextInt(0, 101);
         return numeroinicial;
     }
-    public static int operacionRandom(int valorsumaresta,int valordivmulti,int numeroinicial){
-        int opcion = r.nextInt(1,4);
+      public static int opcion(){
+        int numeroinicial = r.nextInt(1,5);
+        return numeroinicial;
+    }
+    public static int operacionRandom(int suma,int resta ,int div,int multi,int inicial,int opcion){
         switch (opcion) {
             case 1:
-                return numeroinicial-valorsumaresta;
-                break;
-            
+                return inicial-resta;
+            case 2:
+                return inicial+suma;
+            case 3:
+               return inicial*multi; 
+            case 4:
+                return inicial/div;
             default:
                 break;
         }
-        return numeroinicial;
+        return inicial;
     }
     public static int valorsumarestaRandom(){
         int valorsumaresta = r.nextInt(10, 100);
