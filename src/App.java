@@ -199,23 +199,18 @@ public class App {
             switch (opcion) {
                 
                 case 1:
-                       
-                
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" + "+suma);
                         resultado = sc.nextInt();
             
                     break;
                 case 2:
-        
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" - "+resta);
                         resultado = sc.nextInt();
                     break;  
                     
                 case 3:
-                    
-            
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" * "+multi);
                         resultado = sc.nextInt();       
@@ -223,7 +218,6 @@ public class App {
                     break;
             
                 case 4:
-                    
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" / "+div);
                         resultado = sc.nextInt();
@@ -252,10 +246,16 @@ public class App {
         int numeroinicial = r.nextInt(1,5);
         return numeroinicial;
     }
-    public static int operacionRandom(int suma,int resta ,int div,int multi,int inicial,int opcion){
+    public static boolean operacionRandom(int suma,int resta ,int div,int multi,int inicial,int opcion,int resultado){
+        int resultado1=0;
         switch (opcion) {
             case 1:
-                return inicial-resta;
+                 resultado=inicial-resta;
+                 if(resultado1==resultado){
+                    return true;
+                 }else{
+
+                 }
             case 2:
                 return inicial+suma;
             case 3:
