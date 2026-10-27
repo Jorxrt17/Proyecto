@@ -16,9 +16,6 @@ public class App {
     do{switch (opcion) {
         case 1:
             System.out.println("BIENVENIDO A MODO CONCURSO");
-            System.out.println("Turno del jugador 1");
-            numerosale();
-            System.out.println("Turno del jugador 2");
             numerosale();
             break;
         case 2:
@@ -45,19 +42,14 @@ public class App {
     //     acumular resultado
     public static void numerosale() {
         int numeros3cifras=0;
-        int numeros0=0;
-        int numeros1=0;
-        int numeros2=0;
-        int numeros3=0;
-        int numeros4=0;
-        int numeros5=0;
+        int numeros0=numerosgenerados();
+        int numeros1=numerosgenerados();
+        int numeros2=numerosgenerados();
+        int numeros3=numerosgenerados();
+        int numeros4=numerosgenerados();
+        int numeros5=numerosgenerados();
         numeros3cifras = r.nextInt(100, 999);
-        numeros0 = r.nextInt(1,11);
-        numeros1 = r.nextInt(1,11);
-        numeros2 = r.nextInt(1,11);
-        numeros3 = r.nextInt(1,11);
-        numeros4 = r.nextInt(1,11);
-        numeros5 = r.nextInt(1,11);
+        System.out.println("Turno del jugador 1");
         System.out.println("Este es tu numero ha alcanzar: " + numeros3cifras);
         System.out.println("Estos son tus numeros generados aleatoriamente: ");
         System.out.println("Posicion numero 1..:" + " " + numeros0);
@@ -69,7 +61,7 @@ public class App {
         System.out.println("Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeros3cifras);     
       int resultado = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
 
-for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
     System.out.println("Resultado actual: " + resultado);
     boolean valida;
     do {
@@ -91,8 +83,16 @@ for (int i = 0; i < 5; i++) {
     } while (!valida);
 }
 System.out.println("Tu resultado final es: " + resultado);
-System.out.println("Diferencia con el objetivo: " + Math.abs(resultado - numeros3cifras));
+int resultadoabs = Math.abs(resultado - numeros3cifras);
+System.out.println("Diferencia con el objetivo: " + resultadoabs);
+
+
+
     }
+
+
+
+    
     public static int seleccionar(int numeros0, int numeros1, int numeros2, int numeros3, int numeros4, int numeros5) {
         int resultado=0;
         do {
@@ -112,7 +112,9 @@ System.out.println("Diferencia con el objetivo: " + Math.abs(resultado - numeros
                 System.out.println("Numero no valido por favor seleccione entre los generados");
         } while (resultado<0);
         return resultado;
+
     }
+
 
     public static int pedirOperacion() {
     int opcion;
@@ -129,5 +131,25 @@ System.out.println("Diferencia con el objetivo: " + Math.abs(resultado - numeros
     } while (opcion < 1 || opcion > 4);
     System.out.println("Selecciona numero para operar entre los antes vistos");
     return opcion;
+}
+
+public static boolean ganador (int resultado, int numeros3cifras ) {
+    if (resultado==numeros3cifras){
+        return true;
+    }
+    return false;
+}
+
+public static boolean ganador1jugador (int resultado, int numeros3cifras ) {
+    if (resultado==numeros3cifras){
+        return true;
+    }
+    return false;
+}
+
+public static int numerosgenerados (){
+    int numerora = r.nextInt(1,11);
+    return numerora;
+
 }
 }
