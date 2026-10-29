@@ -13,13 +13,15 @@ public class App {
         System.out.println("2.Modo rapido");
         System.out.println("3.Ajustes");
         System.out.println("Opcion 5 : Finalizar");
-        opcion = sc.nextInt();
-        sc.nextLine();
+
         do {
+            opcion = sc.nextInt();
+            sc.nextLine();
             switch (opcion) {
                 case 1:
                     System.out.println("BIENVENIDO A MODO CONCURSO");
                     numerosale();
+
                     break;
                 case 2:
                     System.out.println("BIENVENIDO AL MODO RAPIDO");
@@ -50,7 +52,11 @@ public class App {
         int numeros3 = numerosgenerados();
         int numeros4 = numerosgenerados();
         int numeros5 = numerosgenerados();
-        int numeroalcanzar2 = numeros3cifras();
+        int resultadoabs2=0;
+        int numeroalcanzar=0;
+        int numeroalcanzar2=0;
+        int resultado1=0;
+         numeroalcanzar2 = numeros3cifras();
         System.out.println("Turno del jugador 1");
         System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar2);
         System.out.println("Estos son tus numeros generados aleatoriamente: ");
@@ -64,7 +70,7 @@ public class App {
                 "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroalcanzar2);
         int resultado = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
 
-1        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("Resultado actual: " + resultado);
             boolean valida;
             do {
@@ -90,10 +96,7 @@ public class App {
         int resultadoabs = Math.abs(resultado - numeroalcanzar2);
         System.out.println("Diferencia con el objetivo: " + resultadoabs);
 
-
-
-    
-        int numeroalcanzar = numeros3cifras();
+        numeroalcanzar = numeros3cifras();
         System.out.println("Turno del jugador 2");
         System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar);
         System.out.println("Estos son tus numeros generados aleatoriamente: ");
@@ -103,12 +106,11 @@ public class App {
         System.out.println("Posicion numero 4..:" + " " + numeros3);
         System.out.println("Posicion numero 5..:" + " " + numeros4);
         System.out.println("Posicion numero 6..:" + " " + numeros5);
-        System.out.println("Selecciona la posicion del numero generado para llegar al numero objetivo : " +numeroalcanzar);
-        int resultado1 = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
+        System.out.println(
+                "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroalcanzar);
+         resultado1 = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
 
-
-
-         for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("Resultado actual: " + resultado1);
             boolean valida;
             do {
@@ -129,21 +131,24 @@ public class App {
                 System.out.println(
                         "Selecciona otro numero para operar con tu Resultado actual y llegar a: " + numeroalcanzar);
             } while (!valida);
-         }
-         System.out.println("Tu resultado final es: " + resultado);
-        int resultadoabs2 = Math.abs(resultado - numeroalcanzar);
+        }
+        System.out.println("Tu resultado final es: " + resultado);
+         resultadoabs2 = Math.abs(resultado - numeroalcanzar);
         System.out.println("Diferencia con el objetivo: " + resultadoabs2);
-        if (empate(resultadoabs2, numeroalcanzar2, numeroalcanzar, resultado1)) {
+        if (empate(resultado, numeroalcanzar2, numeroalcanzar2, resultado1, resultadoabs, resultadoabs2)) {
             System.out.println("HABEIS EMPATADO");
         }
 
-        if (ganador1jugador(resultadoabs2, numeroalcanzar2) && ganador2jugador(resultado1, numeroalcanzar) == false) {
+        if (ganador1jugador(resultado, numeroalcanzar2) && ganador2jugador(resultado1, numeroalcanzar) == false) {
             System.out.println("GANADOR JUGADOR 1");
         }
 
         if (ganador2jugador(resultado1, numeroalcanzar) && ganador1jugador(resultadoabs2, numeroalcanzar2) == false) {
             System.out.println("GANADOR JUGADOR 2");
         }
+        if(diferencia(resultadoabs, resultadoabs2)==true){
+            System.out.println("GANADOR JUGADOR 1");
+        }else {System.out.println("GANADOR JUGADOR 2");}
     }
 
     public static int seleccionar(int numeros0, int numeros1, int numeros2, int numeros3, int numeros4, int numeros5) {
@@ -199,15 +204,15 @@ public class App {
         return false;
     }
 
-    public static boolean empate(int resultado,  int numeroalcanzar2, int numeroalcanzar , int resultado1) {
-        if (resultado == numeroalcanzar2  && resultado1 == numeroalcanzar) {
+    public static boolean empate(int resultado, int numeroalcanzar2, int numeroalcanzar, int resultado1, int resultadoabs, int resultadoabs2) {
+        if (resultado == numeroalcanzar2 && resultado1 == numeroalcanzar || resultadoabs == resultadoabs2 ) {
             return true;
         }
         return false;
     }
 
-    public static boolean diferencia( int resultadoabs, int resultadoabs2) {
-        if (resultadoabs < resultadoabs2) {
+    public static boolean diferencia(int resultadoabs, int resultadoabs2) {
+        if (resultadoabs > resultadoabs2) {
             return true;
         }
         return false;
@@ -218,8 +223,9 @@ public class App {
         return numerora;
 
     }
-     public static int numeros3cifras() {
-         int numero = r.nextInt(100, 999);
+
+    public static int numeros3cifras() {
+        int numero = r.nextInt(100, 999);
         return numero;
 
     }
