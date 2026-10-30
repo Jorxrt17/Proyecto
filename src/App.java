@@ -188,6 +188,7 @@ public class App {
         int resultado =0;
         long inicio =0 ;
         long fin=0;
+        int tiempofallo=0;
 
          inicio = System.currentTimeMillis();
         while (contador!=numoperaciones) {
@@ -202,18 +203,26 @@ public class App {
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" + "+suma);
                         resultado = sc.nextInt();
-            
+                        if(operacionRandom(suma, resta, div, multi, inicial, opcion, resultado)==false){
+                            tiempofallo=tiempofallo+20;
+                        }
                     break;
                 case 2:
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" - "+resta);
                         resultado = sc.nextInt();
+                          if(operacionRandom(suma, resta, div, multi, inicial, opcion, resultado)==false){
+                            tiempofallo=tiempofallo+20;
+                        }
                     break;  
                     
                 case 3:
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" * "+multi);
-                        resultado = sc.nextInt();       
+                        resultado = sc.nextInt();
+                          if(operacionRandom(suma, resta, div, multi, inicial, opcion, resultado)==false){
+                            tiempofallo=tiempofallo+20;
+                        }       
                    
                     break;
             
@@ -221,6 +230,9 @@ public class App {
                         System.out.println("La opercion es la siguiente");
                         System.out.println(inicial+" / "+div);
                         resultado = sc.nextInt();
+                          if(operacionRandom(suma, resta, div, multi, inicial, opcion, resultado)==false){
+                            tiempofallo=tiempofallo+20;
+                        }
                     
                     break;
             
@@ -235,7 +247,7 @@ public class App {
             
         }
         fin = System.currentTimeMillis();
-        int segundosTotales = (int) ((fin - inicio) / 1000);
+        int segundosTotales = (int) ((fin - inicio) / 1000)-tiempofallo;
        System.out.println("Esto es lo que has tardado "+ segundosTotales);
     }
     public static int numeroinicialRandom(){
@@ -250,22 +262,37 @@ public class App {
         int resultado1=0;
         switch (opcion) {
             case 1:
-                 resultado=inicial-resta;
+                 resultado1=inicial-resta;
                  if(resultado1==resultado){
                     return true;
                  }else{
-
-                 }
+                    return false ;
+                }
             case 2:
-                return inicial+suma;
+               resultado1=inicial+suma;
+               if (resultado1==resultado) {
+                 return true;
+               }else{
+                return false;
+               }
             case 3:
-               return inicial*multi; 
+               resultado1=inicial*multi;
+               if (resultado1==resultado) {
+                return true;
+               }else{
+                return false;
+               }
             case 4:
-                return inicial/div;
+                resultado1=inicial/div;
+                if(resultado1==resultado){
+                    return true;
+                }else{
+                    return false;
+                }
             default:
                 break;
         }
-        return inicial;
+        return true;
     }
     public static int valorsumarestaRandom(){
         int valorsumaresta = r.nextInt(10, 100);
