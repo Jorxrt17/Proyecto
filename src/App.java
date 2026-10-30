@@ -5,7 +5,7 @@ public class App {
     private static Scanner sc = new Scanner(System.in);
     private static Random r = new Random();
     public static void main(String[] args) throws Exception {
-       // Pruebaletras();
+        Pruebaletras();
         calculadoraHumana();
         
     }
@@ -24,7 +24,7 @@ public class App {
         String respuestamayus;
         String respuestaValidez;
         
-     /*Hacemos q do while que contienen (pedir los datos y devolver si comprobacion  y si existe es true se guarda la respuesta si es falso se repite )para cada jugador  */
+     /*Hacemos que do while que contienen (pedir los datos y devolver si comprobacion  y si existe es true se guarda la respuesta si es falso se repite )para cada jugador  */
 
         do {
             System.out.println("Turno del jugador  1 introduce la palabra con las letras mostradas  ");
@@ -249,6 +249,7 @@ public class App {
         fin = System.currentTimeMillis();
         int segundosTotales = (int) ((fin - inicio) / 1000)-tiempofallo;
        System.out.println("Esto es lo que has tardado "+ segundosTotales);
+
     }
     public static int numeroinicialRandom(){
         int numeroinicial = r.nextInt(0, 101);
