@@ -149,8 +149,8 @@ public class App {
             System.out.println("GANADOR JUGADOR 2");
         }
         if(diferencia(resultadoabs, resultadoabs2)==true){
-            System.out.println("GANADOR JUGADOR 1");
-        }else {System.out.println("GANADOR JUGADOR 2");}
+            System.out.println("GANADOR JUGADOR 2");
+        }else {System.out.println("GANADOR JUGADOR 1");}
     }
 
     public static int seleccionar(int numeros0, int numeros1, int numeros2, int numeros3, int numeros4, int numeros5) {
