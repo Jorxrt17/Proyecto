@@ -219,8 +219,8 @@ public class App {
     }
 
     public static int numerosgenerados() {
-        int numerora = r.nextInt(1, 11);
-        return numerora;
+        int numero = r.nextInt(1, 11);
+        return numero;
 
     }
 
@@ -230,4 +230,64 @@ public class App {
 
     }
 
+    public static int numeroALE() {
+        int numero = r.nextInt(20,50);
+        return numero;
+    }
+
+
+
+public static void Cuentaatras() {
+    System.out.println("BIENVENIDO A CUENTA ATRAS");
+    System.out.println("TIENES COMO OBJETIVO LLEGAR AL NUMERO '0' ANTES QUE TU RIVAL");
+    int numeroobjetivo = numeroALE();
+    int numero1= numerosgenerados();
+    int numero2= numerosgenerados();
+    int numero3= numerosgenerados();
+    int numero4= numerosgenerados();
+    int numero5= numerosgenerados();
+    System.out.println("TURNO DEL JUGADOR 1");
+    System.out.println("Este es vuestro numero objetivo" + numeroobjetivo);
+    System.out.println("Tus numeros a operar son: ");
+    System.out.println("Posicion numero 1..:" + " " + numero1);
+    System.out.println("Posicion numero 2..:" + " " + numero2);
+    System.out.println("Posicion numero 3..:" + " " + numero3);
+    System.out.println("Posicion numero 4..:" + " " + numero4);
+    System.out.println("Posicion numero 5..:" + " " + numero5);
+    System.out.println("Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroobjetivo);
+        int seleccion=seleccionar(numeroobjetivo, numero1, numero2, numero3, numero4, numero5);
+        int numero6=0;
+            for (int i = 0; i < 5; i++) {
+            System.out.println("Resultado actual: " + seleccion);
+            boolean valida;
+            do {
+                int operacion = pedirOperacion();
+                int numero = seleccionar(numero1, numero2, numero3, numero4, numero5,numero6);
+                // OPERACION CON AYUDA DE CLAUDE (no tenia ni idea de como hacerla)
+                valida = !(operacion == 4 && (numero == 0 || seleccion % numero != 0));
+                if (!valida) {
+                    System.out.println("División no válida, elige de nuevo");
+                } else {
+                    seleccion = switch (operacion) {
+                        case 1 -> seleccion + numero;
+                        default -> seleccion - numero;
+                    };
+                }
+                System.out.println(
+                        "Selecciona otro numero para operar con tu Resultado actual y llegar a: " + numeroalcanzar);
+            } while (!valida);
+
+
+
+
+
+
+
+
+
+
+
+}
+
+}
 }
