@@ -78,8 +78,6 @@ public class App {
     }
 
     public static void numerosale() {
-        int punto1=0;
-        int punto2=0;
         int numeros0 = numerosgenerados();
         int numeros1 = numerosgenerados();
         int numeros2 = numerosgenerados();
@@ -294,8 +292,6 @@ public class App {
     }
 
     public static void cuentaatras() {
-        int punto1=0;
-        int punto2=0;
         System.out.println("BIENVENIDO A CUENTA ATRAS");
         System.out.println("");
         System.out.println("TIENES COMO OBJETIVO LLEGAR AL NUMERO '0' ANTES QUE TU RIVAL");
