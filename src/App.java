@@ -1,4 +1,3 @@
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,27 +6,21 @@ public class App {
     private static int puntosjugador2=0;
     private static Scanner sc = new Scanner(System.in);
     private static Random r = new Random();
-
     public static void main(String[] args) throws Exception {
-         pruebaLetras();
+        Pruebaletras();
         calculadoraHumana();
-       
-    
-    
+        
     }
 
-    /*
-     * Empezamos con el juego de letras ,se le da un serie de letras y los jugadores
-     * tienen que escribir
-     * una plabara con esas letras lo mas grande posible el jugador que escriba la
-     * palabra mas grande posible
-     * con las letras generadas gana 1 punto en el marcador global .
-     */
-    public static void pruebaLetras() {
-        System.out.println("La palabra mas larga ");
-
-        String letras = GeneradorLetras();
-        System.out.println("Letras disponibles " + letras);
+    /*Empezamos con el juego de letras ,se le da un serie de letras y los jugadores tienen que escribir 
+    una plabara con esas letras lo mas grande posible el jugador que escriba la palabra mas grande posible 
+    con las letras generadas gana 1 punto en el marcador global .
+    */ 
+    public static void Pruebaletras (){
+     System.out.println("La palabra mas larga ");
+    
+        String letras= GeneradorLetras();
+        System.out.println("Letras disponibles " + letras );
         String respuesta;
         String respuesta2;
         String respuestamayus;
