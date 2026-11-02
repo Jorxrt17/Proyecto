@@ -29,13 +29,14 @@ public class App {
                     numerosale();
                     System.out.println("PRUEBA NUMERO 2");
                     System.out.println("__________________________________");
-                    Pruebaletras();
+                    pruebaLetras();
                     System.out.println("PRUEBA NUMERO 3");
                     System.out.println("__________________________________");
                     calculadoraHumana();
                     System.out.println("PRUEBA NUMERO 4");
                     System.out.println("__________________________________");
                     cuentaatras();
+                    mostrarMarcadorGlobal();
                     break;
                 case 2:
                     System.out.println("BIENVENIDO AL MODO RAPIDO");
@@ -53,7 +54,7 @@ public class App {
                                 numerosale();
                                 break;
                             case 2:
-                                Pruebaletras();
+                                pruebaLetras();
                                 break;
                             case 3:
                                 calculadoraHumana();
@@ -94,6 +95,7 @@ public class App {
         int numeroalcanzar = 0;
         int numeroalcanzar2 = 0;
         int resultado1 = 0;
+        int contador=0;
         numeroalcanzar2 = numeros3cifras();
         System.out.println("Turno del jugador 1");
         System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar2);
@@ -107,8 +109,8 @@ public class App {
         System.out.println(
                 "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroalcanzar2);
         int resultado = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
-
-        for (int i = 0; i < 5; i++) {
+        do {
+            for (int i = 0; i < 5; i++) {
             System.out.println("Resultado actual: " + resultado);
             boolean valida;
             do {
@@ -195,6 +197,13 @@ public class App {
             punto1++;
 
         }
+            contador++;
+            System.out.println("==================================");
+            System.out.println("        RONDA    " + contador + "     FINALIZADA");
+            System.out.println("==================================");
+
+        } while (contador != nrondas);
+        
         if (punto1 > punto2) {
             puntosjugador1++;
         } else {
@@ -314,14 +323,17 @@ public class App {
         System.out.println("TIENES COMO OBJETIVO LLEGAR AL NUMERO '0' ANTES QUE TU RIVAL");
         System.out.println("");
         System.out.println("MIENTRAS EL NUMERO SEA POSTIVO LE RESTARAS NUMEROS Y SI ES NEGATIVO LOS SUMARAS");
-        int numeroobjetivo = numeroALE();
+        int contador2 =0;
+        int punto1=0;
+        int punto2=0;
+        do {
+            int numeroobjetivo = numeroALE();
         int numero1 = numerosgenerados();
         int numero2 = numerosgenerados();
         int numero3 = numerosgenerados();
         int numero4 = numerosgenerados();
         int numero5 = numerosgenerados();
-        int punto1=0;
-        int punto2=0;
+        
         System.out.println("Este es vuestro numero objetivo: " + numeroobjetivo);
         System.out.println("Tus numeros a operar son: ");
         System.out.println("Posicion numero 1..:" + " " + numero1);
@@ -357,6 +369,8 @@ public class App {
             System.out.println("GANADOR JUGADOR 2");
             punto2++;
         }
+        } while (contador2 !=nrondas);
+        
          if(punto1>punto2){
             puntosjugador1++;
         }else{puntosjugador2++;}
