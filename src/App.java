@@ -7,12 +7,13 @@ public class App {
 
     public static void main() {
         int opcion = 0;
+        int opcion1 = 0;
         System.out.println("BIENVENIDO A CIFRAS Y LETRAS");
         System.out.println("Para comenzar dime que modo desea utilizar");
-        System.out.println("1.Modo concurso ");
-        System.out.println("2.Modo rapido");
-        System.out.println("3.Ajustes");
-        System.out.println("Opcion 5 : Finalizar");
+        System.out.println("1. Modo concurso ");
+        System.out.println("2. Modo rapido");
+        System.out.println("3. Ajustes");
+        System.out.println("4. Finalizar");
 
         do {
             opcion = sc.nextInt();
@@ -26,6 +27,32 @@ public class App {
                 case 2:
                     System.out.println("BIENVENIDO AL MODO RAPIDO");
                     System.out.println("Para comenzar dime que prueba desea realizar");
+                    System.out.println("Prueba 1 ");
+                    System.out.println("Prueba 2 ");
+                    System.out.println("Prueba 3 ");
+                    System.out.println("Prueba 4 ");
+                    System.out.println("Opcion 5 : Salir");
+                    do {
+                        opcion1 = sc.nextInt();
+                        sc.nextLine();
+                        switch (opcion1) {
+                            case 1:
+                                numerosale();
+                                break;
+                            case 2:
+
+                                break;
+                            case 3:
+
+                                break;
+                            case 4:
+                                cuentaatras();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    } while (opcion1 != 5);
                     break;
                 case 3:
                     System.out.println("BIENVENIDO A AJUSTES");
@@ -37,14 +64,9 @@ public class App {
                     break;
             }
 
-        } while (opcion != 5);
+        } while (opcion != 4);
     }
 
-    // Inicializar resultado con seleccion
-    // Bucle 5 veces
-    // Seleccionar operacion
-    // seleccionar numero
-    // acumular resultado
     public static void numerosale() {
         int numeros0 = numerosgenerados();
         int numeros1 = numerosgenerados();
@@ -52,11 +74,11 @@ public class App {
         int numeros3 = numerosgenerados();
         int numeros4 = numerosgenerados();
         int numeros5 = numerosgenerados();
-        int resultadoabs2=0;
-        int numeroalcanzar=0;
-        int numeroalcanzar2=0;
-        int resultado1=0;
-         numeroalcanzar2 = numeros3cifras();
+        int resultadoabs2 = 0;
+        int numeroalcanzar = 0;
+        int numeroalcanzar2 = 0;
+        int resultado1 = 0;
+        numeroalcanzar2 = numeros3cifras();
         System.out.println("Turno del jugador 1");
         System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar2);
         System.out.println("Estos son tus numeros generados aleatoriamente: ");
@@ -108,7 +130,7 @@ public class App {
         System.out.println("Posicion numero 6..:" + " " + numeros5);
         System.out.println(
                 "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroalcanzar);
-         resultado1 = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
+        resultado1 = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
 
         for (int i = 0; i < 5; i++) {
             System.out.println("Resultado actual: " + resultado1);
@@ -133,7 +155,7 @@ public class App {
             } while (!valida);
         }
         System.out.println("Tu resultado final es: " + resultado);
-         resultadoabs2 = Math.abs(resultado - numeroalcanzar);
+        resultadoabs2 = Math.abs(resultado - numeroalcanzar);
         System.out.println("Diferencia con el objetivo: " + resultadoabs2);
         if (empate(resultado, numeroalcanzar2, numeroalcanzar2, resultado1, resultadoabs, resultadoabs2)) {
             System.out.println("HABEIS EMPATADO");
@@ -146,9 +168,11 @@ public class App {
         if (ganador2jugador(resultado1, numeroalcanzar) && ganador1jugador(resultadoabs2, numeroalcanzar2) == false) {
             System.out.println("GANADOR JUGADOR 2");
         }
-        if(diferencia(resultadoabs, resultadoabs2)==true){
+        if (diferencia(resultadoabs, resultadoabs2) == true) {
             System.out.println("GANADOR JUGADOR 1");
-        }else {System.out.println("GANADOR JUGADOR 2");}
+        } else {
+            System.out.println("GANADOR JUGADOR 2");
+        }
     }
 
     public static int seleccionar(int numeros0, int numeros1, int numeros2, int numeros3, int numeros4, int numeros5) {
@@ -163,6 +187,27 @@ public class App {
                 case 4 -> numeros3;
                 case 5 -> numeros4;
                 case 6 -> numeros5;
+                default -> -1;
+
+            };
+            if (resultado == -1)
+                System.out.println("Numero no valido por favor seleccione entre los generados");
+        } while (resultado < 0);
+        return resultado;
+
+    }
+
+    public static int seleccionar2(int numero1, int numero2, int numero3, int numero4, int numero5) {
+        int resultado = 0;
+        do {
+            int opcion = sc.nextInt();
+            sc.nextLine();
+            resultado = switch (opcion) {
+                case 1 -> numero1;
+                case 2 -> numero2;
+                case 3 -> numero3;
+                case 4 -> numero4;
+                case 5 -> numero5;
                 default -> -1;
 
             };
@@ -204,8 +249,9 @@ public class App {
         return false;
     }
 
-    public static boolean empate(int resultado, int numeroalcanzar2, int numeroalcanzar, int resultado1, int resultadoabs, int resultadoabs2) {
-        if (resultado == numeroalcanzar2 && resultado1 == numeroalcanzar || resultadoabs == resultadoabs2 ) {
+    public static boolean empate(int resultado, int numeroalcanzar2, int numeroalcanzar, int resultado1,
+            int resultadoabs, int resultadoabs2) {
+        if (resultado == numeroalcanzar2 && resultado1 == numeroalcanzar || resultadoabs == resultadoabs2) {
             return true;
         }
         return false;
@@ -231,63 +277,56 @@ public class App {
     }
 
     public static int numeroALE() {
-        int numero = r.nextInt(20,50);
+        int numero = r.nextInt(20, 50);
         return numero;
     }
 
+    public static void cuentaatras() {
+        System.out.println("BIENVENIDO A CUENTA ATRAS");
+        System.out.println("");
+        System.out.println("TIENES COMO OBJETIVO LLEGAR AL NUMERO '0' ANTES QUE TU RIVAL");
+        System.out.println("");
+        System.out.println("MIENTRAS EL NUMERO SEA POSTIVO LE RESTARAS NUMEROS Y SI ES NEGATIVO LOS SUMARAS");
+        int numeroobjetivo = numeroALE();
+        int numero1 = numerosgenerados();
+        int numero2 = numerosgenerados();
+        int numero3 = numerosgenerados();
+        int numero4 = numerosgenerados();
+        int numero5 = numerosgenerados();
+        System.out.println("Este es vuestro numero objetivo: " + numeroobjetivo);
+        System.out.println("Tus numeros a operar son: ");
+        System.out.println("Posicion numero 1..:" + " " + numero1);
+        System.out.println("Posicion numero 2..:" + " " + numero2);
+        System.out.println("Posicion numero 3..:" + " " + numero3);
+        System.out.println("Posicion numero 4..:" + " " + numero4);
+        System.out.println("Posicion numero 5..:" + " " + numero5);
+        System.out.println(
+                "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroobjetivo);
+        int contador = 1;
+        do {
+            if (contador % 2 == 0) {
+                System.out.println("Turno del jugador 2");
+            } else {
+                System.out.println("Turno del jugador 1");
+            }
+            int numero = seleccionar2(numero1, numero2, numero3, numero4, numero5);
+            if (numeroobjetivo > 0) {
+                numeroobjetivo = numeroobjetivo - numero;
 
+            } else {
+                numeroobjetivo = numeroobjetivo + numero;
+            }
+            System.out.println("Has operado con este numero: " + numero);
+            System.out.println("Resultado actual: " + numeroobjetivo);
+            contador++;
+        } while (numeroobjetivo != 0);
 
-public static void Cuentaatras() {
-    System.out.println("BIENVENIDO A CUENTA ATRAS");
-    System.out.println("TIENES COMO OBJETIVO LLEGAR AL NUMERO '0' ANTES QUE TU RIVAL");
-    int numeroobjetivo = numeroALE();
-    int numero1= numerosgenerados();
-    int numero2= numerosgenerados();
-    int numero3= numerosgenerados();
-    int numero4= numerosgenerados();
-    int numero5= numerosgenerados();
-    System.out.println("TURNO DEL JUGADOR 1");
-    System.out.println("Este es vuestro numero objetivo" + numeroobjetivo);
-    System.out.println("Tus numeros a operar son: ");
-    System.out.println("Posicion numero 1..:" + " " + numero1);
-    System.out.println("Posicion numero 2..:" + " " + numero2);
-    System.out.println("Posicion numero 3..:" + " " + numero3);
-    System.out.println("Posicion numero 4..:" + " " + numero4);
-    System.out.println("Posicion numero 5..:" + " " + numero5);
-    System.out.println("Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroobjetivo);
-        int seleccion=seleccionar(numeroobjetivo, numero1, numero2, numero3, numero4, numero5);
-        int numero6=0;
-            for (int i = 0; i < 5; i++) {
-            System.out.println("Resultado actual: " + seleccion);
-            boolean valida;
-            do {
-                int operacion = pedirOperacion();
-                int numero = seleccionar(numero1, numero2, numero3, numero4, numero5,numero6);
-                // OPERACION CON AYUDA DE CLAUDE (no tenia ni idea de como hacerla)
-                valida = !(operacion == 4 && (numero == 0 || seleccion % numero != 0));
-                if (!valida) {
-                    System.out.println("División no válida, elige de nuevo");
-                } else {
-                    seleccion = switch (operacion) {
-                        case 1 -> seleccion + numero;
-                        default -> seleccion - numero;
-                    };
-                }
-                System.out.println(
-                        "Selecciona otro numero para operar con tu Resultado actual y llegar a: " + numeroalcanzar);
-            } while (!valida);
+        if (contador % 2 == 0) {
+            System.out.println("GANADOR JUGADOR 1");
+        } else {
+            System.out.println("GANADOR JUGADOR 2");
+        }
 
+    }
 
-
-
-
-
-
-
-
-
-
-}
-
-}
 }
