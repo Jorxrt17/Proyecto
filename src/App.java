@@ -22,9 +22,9 @@ public class App {
                 case 1:
                     System.out.println("BIENVENIDO A MODO CONCURSO");
                     numerosale();
-                    Pruebaletras();
+                    pruebaletras();
                     calculadoraHumana();
-
+                    cuentaatras();
                     break;
                 case 2:
                     System.out.println("BIENVENIDO AL MODO RAPIDO");
@@ -42,10 +42,10 @@ public class App {
                                 numerosale();
                                 break;
                             case 2:
-
+                                 pruebaletras();
                                 break;
                             case 3:
-
+                                calculadoraHumana();
                                 break;
                             case 4:
                                 cuentaatras();
@@ -285,7 +285,7 @@ public class App {
      * palabra mas grande posible
      * con las letras generadas gana 1 punto en el marcador global .
      */
-    public static void Pruebaletras() {
+    public static void pruebaletras() {
         System.out.println("La palabra mas larga ");
 
         String letras = GeneradorLetras();
@@ -578,7 +578,7 @@ public class App {
         return valordivmulti;
     }
 
-}
+
 
     public static int numeroALE() {
         int numero = r.nextInt(20, 50);
