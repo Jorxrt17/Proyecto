@@ -21,18 +21,26 @@ public class App {
             switch (opcion) {
                 case 1:
                     System.out.println("BIENVENIDO A MODO CONCURSO");
+                    System.out.println("PRUEBA NUMERO 1");
+                    System.out.println("__________________________________");
                     numerosale();
+                    System.out.println("PRUEBA NUMERO 2");
+                    System.out.println("__________________________________");
                     pruebaletras();
+                    System.out.println("PRUEBA NUMERO 3");
+                    System.out.println("__________________________________");
                     calculadoraHumana();
+                    System.out.println("PRUEBA NUMERO 4");
+                    System.out.println("__________________________________");
                     cuentaatras();
                     break;
                 case 2:
                     System.out.println("BIENVENIDO AL MODO RAPIDO");
                     System.out.println("Para comenzar dime que prueba desea realizar");
-                    System.out.println("Prueba 1 ");
-                    System.out.println("Prueba 2 ");
-                    System.out.println("Prueba 3 ");
-                    System.out.println("Prueba 4 ");
+                    System.out.println("Prueba 1 : La cifra exacta ");
+                    System.out.println("Prueba 2 : La palabra más larga ");
+                    System.out.println("Prueba 3 : La calculadora humana ");
+                    System.out.println("Prueba 4 : La cuenta atras (Original) ");
                     System.out.println("Opcion 5 : Salir");
                     do {
                         opcion1 = sc.nextInt();
