@@ -26,10 +26,10 @@ public class App {
                     numerosale();
                     System.out.println("PRUEBA NUMERO 2");
                     System.out.println("__________________________________");
-                    //pruebaletras();
+                    pruebaLetras();
                     System.out.println("PRUEBA NUMERO 3");
                     System.out.println("__________________________________");
-                    //calculadoraHumana();
+                    calculadoraHumana();
                     System.out.println("PRUEBA NUMERO 4");
                     System.out.println("__________________________________");
                     cuentaatras();
