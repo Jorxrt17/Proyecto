@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class App {
     private static int puntosjugador1 = 0;
     private static int puntosjugador2 = 0;
-    private static int nrondas = 1;
+    private static int nrondas = 3;
     private static int nletras = 2;
     private static int noperaciones = 4;
     private static Scanner sc = new Scanner(System.in);
@@ -39,14 +39,14 @@ public class App {
                     mostrarMarcadorGlobal();
                     break;
                 case 2:
+                    System.out.println("BIENVENIDO AL MODO RAPIDO");
+                    System.out.println("Para comenzar dime que prueba desea realizar");
+                    System.out.println("Prueba 1 : La cifra exacta");
+                    System.out.println("Prueba 2 : La palabra más larga");
+                    System.out.println("Prueba 3 : La calculadora humana");
+                    System.out.println("Prueba 4 : La cuenta atras (Original)");
+                    System.out.println("Opcion 5 : Salir");
                     do {
-                        System.out.println("BIENVENIDO AL MODO RAPIDO");
-                        System.out.println("Para comenzar dime que prueba desea realizar");
-                        System.out.println("Prueba 1 : La cifra exacta");
-                        System.out.println("Prueba 2 : La palabra más larga");
-                        System.out.println("Prueba 3 : La calculadora humana");
-                        System.out.println("Prueba 4 : La cuenta atras (Original)");
-                        System.out.println("Opcion 5 : Salir");
                         opcion1 = sc.nextInt();
                         sc.nextLine();
                         switch (opcion1) {
@@ -95,7 +95,7 @@ public class App {
         int numeroalcanzar = 0;
         int numeroalcanzar2 = 0;
         int resultado1 = 0;
-        int contador = 0;
+        int contador=0;
         numeroalcanzar2 = numeros3cifras();
         System.out.println("Turno del jugador 1");
         System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar2);
@@ -111,101 +111,99 @@ public class App {
         int resultado = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
         do {
             for (int i = 0; i < 5; i++) {
-                System.out.println("Resultado actual: " + resultado);
-                boolean valida;
-                do {
-                    int operacion = pedirOperacion();
-                    int numero = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
-                    // OPERACION CON AYUDA DE CLAUDE (no tenia ni idea de como hacerla)
-                    valida = !(operacion == 4 && (numero == 0 || resultado % numero != 0));
-                    if (!valida) {
-                        System.out.println("División no válida, elige de nuevo");
-                    } else {
-                        resultado = switch (operacion) {
-                            case 1 -> resultado + numero;
-                            case 2 -> resultado - numero;
-                            case 3 -> resultado * numero;
-                            default -> resultado / numero;
-                        };
-                    }
-                    System.out.println(
-                            "Selecciona otro numero para operar con tu Resultado actual y llegar a: "
-                                    + numeroalcanzar2);
-                } while (!valida);
-            }
-            System.out.println("Tu resultado final es: " + resultado);
-            int resultadoabs = Math.abs(resultado - numeroalcanzar2);
-            System.out.println("Diferencia con el objetivo: " + resultadoabs);
+            System.out.println("Resultado actual: " + resultado);
+            boolean valida;
+            do {
+                int operacion = pedirOperacion();
+                int numero = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
+                // OPERACION CON AYUDA DE CLAUDE (no tenia ni idea de como hacerla)
+                valida = !(operacion == 4 && (numero == 0 || resultado % numero != 0));
+                if (!valida) {
+                    System.out.println("División no válida, elige de nuevo");
+                } else {
+                    resultado = switch (operacion) {
+                        case 1 -> resultado + numero;
+                        case 2 -> resultado - numero;
+                        case 3 -> resultado * numero;
+                        default -> resultado / numero;
+                    };
+                }
+                System.out.println(
+                        "Selecciona otro numero para operar con tu Resultado actual y llegar a: " + numeroalcanzar2);
+            } while (!valida);
+        }
+        System.out.println("Tu resultado final es: " + resultado);
+        int resultadoabs = Math.abs(resultado - numeroalcanzar2);
+        System.out.println("Diferencia con el objetivo: " + resultadoabs);
 
-            numeroalcanzar = numeros3cifras();
-            System.out.println("Turno del jugador 2");
-            System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar);
-            System.out.println("Estos son tus numeros generados aleatoriamente: ");
-            System.out.println("Posicion numero 1..:" + " " + numeros0);
-            System.out.println("Posicion numero 2..:" + " " + numeros1);
-            System.out.println("Posicion numero 3..:" + " " + numeros2);
-            System.out.println("Posicion numero 4..:" + " " + numeros3);
-            System.out.println("Posicion numero 5..:" + " " + numeros4);
-            System.out.println("Posicion numero 6..:" + " " + numeros5);
-            System.out.println(
-                    "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroalcanzar);
-            resultado1 = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
+        numeroalcanzar = numeros3cifras();
+        System.out.println("Turno del jugador 2");
+        System.out.println("Este es tu numero ha alcanzar: " + numeroalcanzar);
+        System.out.println("Estos son tus numeros generados aleatoriamente: ");
+        System.out.println("Posicion numero 1..:" + " " + numeros0);
+        System.out.println("Posicion numero 2..:" + " " + numeros1);
+        System.out.println("Posicion numero 3..:" + " " + numeros2);
+        System.out.println("Posicion numero 4..:" + " " + numeros3);
+        System.out.println("Posicion numero 5..:" + " " + numeros4);
+        System.out.println("Posicion numero 6..:" + " " + numeros5);
+        System.out.println(
+                "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroalcanzar);
+        resultado1 = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
 
-            for (int i = 0; i < 5; i++) {
-                System.out.println("Resultado actual: " + resultado1);
-                boolean valida;
-                do {
-                    int operacion = pedirOperacion();
-                    int numero = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
-                    // OPERACION CON AYUDA DE CLAUDE (no tenia ni idea de como hacerla)
-                    valida = !(operacion == 4 && (numero == 0 || resultado1 % numero != 0));
-                    if (!valida) {
-                        System.out.println("División no válida, elige de nuevo");
-                    } else {
-                        resultado1 = switch (operacion) {
-                            case 1 -> resultado1 + numero;
-                            case 2 -> resultado1 - numero;
-                            case 3 -> resultado1 * numero;
-                            default -> resultado1 / numero;
-                        };
-                    }
-                    System.out.println(
-                            "Selecciona otro numero para operar con tu Resultado actual y llegar a: " + numeroalcanzar);
-                } while (!valida);
-            }
-            System.out.println("Tu resultado final es: " + resultado);
-            resultadoabs2 = Math.abs(resultado - numeroalcanzar);
-            System.out.println("Diferencia con el objetivo: " + resultadoabs2);
-            if (empate(resultado, numeroalcanzar2, numeroalcanzar2, resultado1, resultadoabs, resultadoabs2)) {
-                System.out.println("HABEIS EMPATADO");
-            }
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Resultado actual: " + resultado1);
+            boolean valida;
+            do {
+                int operacion = pedirOperacion();
+                int numero = seleccionar(numeros0, numeros1, numeros2, numeros3, numeros4, numeros5);
+                // OPERACION CON AYUDA DE CLAUDE (no tenia ni idea de como hacerla)
+                valida = !(operacion == 4 && (numero == 0 || resultado1 % numero != 0));
+                if (!valida) {
+                    System.out.println("División no válida, elige de nuevo");
+                } else {
+                    resultado1 = switch (operacion) {
+                        case 1 -> resultado1 + numero;
+                        case 2 -> resultado1 - numero;
+                        case 3 -> resultado1 * numero;
+                        default -> resultado1 / numero;
+                    };
+                }
+                System.out.println(
+                        "Selecciona otro numero para operar con tu Resultado actual y llegar a: " + numeroalcanzar);
+            } while (!valida);
+        }
+        System.out.println("Tu resultado final es: " + resultado);
+        resultadoabs2 = Math.abs(resultado - numeroalcanzar);
+        System.out.println("Diferencia con el objetivo: " + resultadoabs2);
+        if (empate(resultado, numeroalcanzar2, numeroalcanzar2, resultado1, resultadoabs, resultadoabs2)) {
+            System.out.println("HABEIS EMPATADO");
+        }
 
-            if (ganador1jugador(resultado, numeroalcanzar2) && ganador2jugador(resultado1, numeroalcanzar) == false) {
-                System.out.println("GANADOR JUGADOR 1");
-                punto1++;
-            }
+        if (ganador1jugador(resultado, numeroalcanzar2) && ganador2jugador(resultado1, numeroalcanzar) == false) {
+            System.out.println("GANADOR JUGADOR 1");
+            punto1++;
+        }
 
-            if (ganador2jugador(resultado1, numeroalcanzar)
-                    && ganador1jugador(resultadoabs2, numeroalcanzar2) == false) {
-                System.out.println("GANADOR JUGADOR 2");
-                punto2++;
-            }
-            if (diferencia(resultadoabs, resultadoabs2) == true) {
-                System.out.println("GANADOR JUGADOR 2");
-                punto2++;
+        if (ganador2jugador(resultado1, numeroalcanzar) && ganador1jugador(resultadoabs2, numeroalcanzar2) == false) {
+            System.out.println("GANADOR JUGADOR 2");
+            punto2++;
+        }
+        if (diferencia(resultadoabs, resultadoabs2) == true) {
+            System.out.println("GANADOR JUGADOR 2");
+            punto2++;
 
-            } else {
-                System.out.println("GANADOR JUGADOR 1");
-                punto1++;
+        } else {
+            System.out.println("GANADOR JUGADOR 1");
+            punto1++;
 
-            }
+        }
             contador++;
             System.out.println("==================================");
             System.out.println("        RONDA    " + contador + "     FINALIZADA");
             System.out.println("==================================");
 
         } while (contador != nrondas);
-
+        
         if (punto1 > punto2) {
             puntosjugador1++;
         } else {
@@ -325,60 +323,57 @@ public class App {
         System.out.println("TIENES COMO OBJETIVO LLEGAR AL NUMERO '0' ANTES QUE TU RIVAL");
         System.out.println("");
         System.out.println("MIENTRAS EL NUMERO SEA POSTIVO LE RESTARAS NUMEROS Y SI ES NEGATIVO LOS SUMARAS");
-        int contador2 = 0;
-        int punto1 = 0;
-        int punto2 = 0;
+        int contador2 =0;
+        int punto1=0;
+        int punto2=0;
         do {
             int numeroobjetivo = numeroALE();
-            int numero1 = numerosgenerados();
-            int numero2 = numerosgenerados();
-            int numero3 = numerosgenerados();
-            int numero4 = numerosgenerados();
-            int numero5 = numerosgenerados();
-
-            System.out.println("Este es vuestro numero objetivo: " + numeroobjetivo);
-            System.out.println("Tus numeros a operar son: ");
-            System.out.println("Posicion numero 1..:" + " " + numero1);
-            System.out.println("Posicion numero 2..:" + " " + numero2);
-            System.out.println("Posicion numero 3..:" + " " + numero3);
-            System.out.println("Posicion numero 4..:" + " " + numero4);
-            System.out.println("Posicion numero 5..:" + " " + numero5);
-            System.out.println(
-                    "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroobjetivo);
-            int contador = 1;
-            do {
-                if (contador % 2 == 0) {
-                    System.out.println("Turno del jugador 2");
-                } else {
-                    System.out.println("Turno del jugador 1");
-                }
-                int numero = seleccionar2(numero1, numero2, numero3, numero4, numero5);
-                if (numeroobjetivo > 0) {
-                    numeroobjetivo = numeroobjetivo - numero;
-
-                } else {
-                    numeroobjetivo = numeroobjetivo + numero;
-                }
-                System.out.println("Has operado con este numero: " + numero);
-                System.out.println("Resultado actual: " + numeroobjetivo);
-                contador++;
-            } while (numeroobjetivo != 0);
-
+        int numero1 = numerosgenerados();
+        int numero2 = numerosgenerados();
+        int numero3 = numerosgenerados();
+        int numero4 = numerosgenerados();
+        int numero5 = numerosgenerados();
+        
+        System.out.println("Este es vuestro numero objetivo: " + numeroobjetivo);
+        System.out.println("Tus numeros a operar son: ");
+        System.out.println("Posicion numero 1..:" + " " + numero1);
+        System.out.println("Posicion numero 2..:" + " " + numero2);
+        System.out.println("Posicion numero 3..:" + " " + numero3);
+        System.out.println("Posicion numero 4..:" + " " + numero4);
+        System.out.println("Posicion numero 5..:" + " " + numero5);
+        System.out.println(
+                "Selecciona la posicion del numero generado para llegar al numero objetivo : " + numeroobjetivo);
+        int contador = 1;
+        do {
             if (contador % 2 == 0) {
-                System.out.println("GANADOR JUGADOR 1");
-                punto1++;
+                System.out.println("Turno del jugador 2");
             } else {
-                System.out.println("GANADOR JUGADOR 2");
-                punto2++;
+                System.out.println("Turno del jugador 1");
             }
-            contador2++;
-        } while (contador2 != nrondas);
+            int numero = seleccionar2(numero1, numero2, numero3, numero4, numero5);
+            if (numeroobjetivo > 0) {
+                numeroobjetivo = numeroobjetivo - numero;
 
-        if (punto1 > punto2) {
-            puntosjugador1++;
+            } else {
+                numeroobjetivo = numeroobjetivo + numero;
+            }
+            System.out.println("Has operado con este numero: " + numero);
+            System.out.println("Resultado actual: " + numeroobjetivo);
+            contador++;
+        } while (numeroobjetivo != 0);
+
+        if (contador % 2 == 0) {
+            System.out.println("GANADOR JUGADOR 1");
+            punto1++;
         } else {
-            puntosjugador2++;
+            System.out.println("GANADOR JUGADOR 2");
+            punto2++;
         }
+        } while (contador2 !=nrondas);
+        
+         if(punto1>punto2){
+            puntosjugador1++;
+        }else{puntosjugador2++;}
     }
 
     /*
@@ -603,13 +598,13 @@ public class App {
     }
 
     /*
-     * Funcion que le entra los datos con la variable letras que guarda las letras
-     * generadas
-     * respuestamayus que guarda la respuesta en mayuscula y comprobamos si contiene
-     * esas letras
-     * en la palabra que ha escrito el usuario
+         Funcion que le entra los datos con la variable letras que guarda las letras
+         generadas
+         respuestamayus que guarda la respuesta en mayuscula y comprobamos si contiene
+         esas letras
+         en la palabra que ha escrito el usuario
      */
-    public static boolean comprobacion(String respuestamayus, String letras) {
+     public static boolean comprobacion(String respuestamayus, String letras) {
         String posicion;
         for (int i = 0; i < respuestamayus.length(); i++) {
             posicion = String.valueOf(respuestamayus.charAt(i));
@@ -939,4 +934,7 @@ public class App {
 
     }
 
+
 }
+
+
