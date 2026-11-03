@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class App {
     private static int puntosjugador1 = 0;
     private static int puntosjugador2 = 0;
-    private static int nrondas = 3;
+    private static int nrondas = 1;
     private static int nletras = 2;
     private static int noperaciones = 4;
     private static Scanner sc = new Scanner(System.in);
@@ -371,6 +371,7 @@ public class App {
                 System.out.println("GANADOR JUGADOR 2");
                 punto2++;
             }
+            contador2++;
         } while (contador2 != nrondas);
 
         if (punto1 > punto2) {
